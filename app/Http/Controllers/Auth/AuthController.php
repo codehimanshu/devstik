@@ -6,6 +6,7 @@ use Socialite;
 
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -103,8 +104,8 @@ class AuthController extends Controller
         $user->getName();
         $user->getEmail();
         $user->getAvatar();
-
-        return $username;
+        Auth($username);
+        return redirect('/dashboard');
     }
 
 }

@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.homepage');
 });
 
-// Githubb Auth
+Route::get('/dashboard', 'User\DashboardController@index');
+// Github Auth
 Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
